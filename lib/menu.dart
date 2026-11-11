@@ -5,7 +5,7 @@ class MyHomePage extends StatelessWidget {
 
     final String npm = "2506543363";
     final String nama = "Vebian Francois Ariftya Manurung";
-    final String kelas = "PBP C ";
+    final String kelas = "PBP D";
 
     final List<ItemHomepage> items = [
         ItemHomepage("Lihat Proyek", Icons.folder),
