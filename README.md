@@ -129,6 +129,35 @@ Adding new packages or files
 Berikan contoh kasus terjadinya masing-masing poin tersebut
 ```
 
+
+### Tugas 8
+
+1. Sistem halaman diflutter menggunakan struktur seperti stack dan yang ada dipaling atas (siap pop) adalah halaman yang ditampilkan, awalnya stack berisi halaman yang dipanggil main. Berikut perbedaan:
+    - `Navigator.push` digunakan untuk menambahkan tumpukan halaman baru di dalam stack, karena yang baru ditambahkan menjadi dipaling atas, maka halaman itulah yang ditampilkan
+    - `Navigator.pushReplacement` perumpamaannya seperti pop lalu push. Jadi halaman menggantikan halaman lain yang sedang ada di paling atas stack saat itu, jadi stack halaman tidak bertambah, hanya yang paling atas berubah/figanti
+    - `Navigator.pop` mengeluarkan halaman paling atas pada stack, dan halaman yang ditampilkan adalah halaman yang ada dibawahnya. Jika tidak ada halaman lagi ketika pop, maka akan keluar dari aplikasi
+
+    Pada halaman yang dibuka memakai kartu aksi digunakan `Navigator.push`, dengan ini ketika user kembali, maka akan masuk kembali ke halaman Homepage kembali.Berbeda dengan di Drawer yang memakai `Navigator.pushReplacement` untuk mengganti halaman, seperti opsi Home yang akan langsung mengganti halaman saat ini dengan HomePage, jadi tidak bisa kembali (misal habis dari form)
+
+2. Mirip seperti di html css, menjaga konsistensi itu membantu kita sendiri untuk mengingat dan memahami kode sendri. Juga seperti tidak memakai div semua :v
+Terlebih widget di Flutter memiliki fungsi khusus masing-masing.
+    - **Scaffold**: menjadi kerangka utama, menyediakan tempat untuk appBar, body dan lainnya
+    - **AppBar**: Mengatur bagian judul diatas layar
+    - **Drawer**: Tempat navigasi agar mudah untuk berganti halaman (seperti navbar)
+
+Warna background pada Appbar, warna yang mewariskan dari colorScheme.primary adalah contoh penggunaan warna tema yang digunakan di halaman berbeda
+
+3. Tata letak yang dipakai adalah balok input dari di satu kolom dari atas sampai bawah agar rapi dan eksperimen pengguna baik (memudahkan pengguna smartphone untuk mengisinya dengan mudah dibanding kotak kecil yang dibuat berkolom-kolom). Memakai Padding dan SizedBox untuk memberi jarak antaran input dan scroll bawah untuk mengakses input lain yang tidak cukup dilayar hp. Karena pengguna smartphone tidak memiliki kursor untuk memilih daerah yang ingin diklik secara presisi
+
+4.  - `GlobalKey<FormState>` sebuah pointer   alamat widget Form dan state untuk menghubungkan Form dengan tombol simpan, dimana ketika ditekan, akan dilakukan tes untuk semua validasi yang ada didalam Form.
+    - `validator` adalah sebuah fungsi untuk mencek input yang diberikan (masuk kevariabel). Secara default pun memberi pesan penanda jika input yang dimasukkan tidak valid.
+    - `validate()` memeriksa seluruh validator yang ada didalam Form. Dimana akan memberikan nilai _true_ hanya jika semua validator valid
+
+    hubungan ketiganya, jadi didalam Form yang statenya disimpan didalam GlobalKey, mencatat semua input yang ada didalam Form seperti nama, deskripsi dan lainnya. setiap input memiliki validator dan ketika tombol Simpan ditekan, akan dijalankan perintah `_formKey.currentState!.validate() untuk mentes semua validator yang tersimpan tadi. Jika semuanya valid, maka statenya akan direset kembali 
+
+    Contoh nilai yang ditolak oleh validasi adalah mengosongkan atau hanya mengisi input Nama dengan spasi ("  "). Pada awalnnya di cek apakah input bernilai null (ada ? untuk memperbolehkan suatu variabel bernilai null) atau ketika ditrim (menghilangkan spasi di depan dan belakang/kalau hanya spasi otomatis jadi string kosong "") dan cek kosong atau tidaknya. Terdekteksi dan pesan error/peringatan akan muncul. return null jika valid, karena tidak ada pesan yang perlu ditampilkan
+
+> Saya menggunakan model AI Gemini dalam pengerjaan tugas ini. Yaitu untuk membuat validasi format url, dimana saya membuat validasi sederhana saja dalam bentuk psudocode dan meminta bantuan untuk menulisnya dalam bahasa dart. Lalu pada cara memakai dan mengimplementasikan `showDatePicker()` seperti yang diberitaukan di soal Tugas sekaligus diberikan cara untuk membuat format tanggalnya agar jam tidak perlu masuk (Defaultnya DateTime ada).
 ## Learning Source
 - https://dev.to/alaminkarno/why-you-should-care-about-buildcontext-in-flutter-the-one-mistake-that-cost-me-hours-5fn3
 - https://ritikprajapat.medium.com/understanding-flutters-widget-tree-d9b7d78585d6

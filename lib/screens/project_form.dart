@@ -50,8 +50,8 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         decoration: InputDecoration(
-                          hintText: "Nama Proyek",
-                          labelText: "Nama Proyek",
+                          hintText: "Project Name",
+                          labelText: "Project Name",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
